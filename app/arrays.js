@@ -54,19 +54,39 @@ exports.arraysAnswers = {
   },
 
   append : function(arr, item) {
+    var len = arr.length;
 
+    arr[len] = item;
+    return arr;
   },
 
   truncate : function(arr) {
+    var len = arr.length - 1;
 
+    delete arr[len];
+    arr.length = len;
+    return arr;
   },
 
   prepend : function(arr, item) {
+    var len = arr.length;
 
+    for (var i = arr.length; i > 0; i--) {
+      arr[i] = arr[i - 1];
+    }
+    arr[0] = item;
+    return arr;
   },
 
   curtail : function(arr) {
+    var len = arr.length - 1;
 
+    for (var i = 0; i <= len; i++) {
+      arr[i] = arr[i + 1];
+    }
+    delete arr[len];
+    arr.length = len;
+    return arr;
   },
 
   concat : function(arr1, arr2) {
