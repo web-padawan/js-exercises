@@ -13,6 +13,4 @@ http.createServer(function (req, res) {
   serve(req, res, done);
 }).listen(port, host);
 
-f= fs.readFileSync(__dirname + '/help.txt', 'utf8');
-console.log(f.replace('{{host}}', host).replace('{{port}}', port));
 console.log('Server running %s:%d...', host, port);
