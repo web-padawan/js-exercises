@@ -90,26 +90,62 @@ exports.arraysAnswers = {
   },
 
   concat : function(arr1, arr2) {
+    var out = [];
 
+    for (var i = 0; i < arr1.length + arr2.length; i++) {
+      out.push((i < arr1.length) ? arr1[i] : arr2[i - arr1.length]);
+    }
+
+    return out;
   },
 
   insert : function(arr, item, index) {
+    var len = arr.length;
 
+    for (var i = len; i > index; i--) {
+      arr[i] = arr[i - 1];
+    }
+    arr[index] = item;
+
+    return arr;
   },
 
   count : function(arr, item) {
+    var test = function(value) {
+      return value === item;
+    };
+    var matches = arr.filter(test) || [];
 
+    return matches.length;
   },
 
   duplicates : function(arr) {
+    var result = [];
 
+    for (var i = 0; i < arr.length; i++){
+      if (arr.indexOf(arr[i], i + 1) !== -1 && result[result.length - 1] !== arr[i]) {
+        result.push(arr[i]);
+      }
+    }
+
+    return result;
   },
 
   square : function(arr) {
-
+    return arr.map(function(elem) {
+      return elem * elem;
+    });
   },
 
   findAllOccurrences : function(arr, target) {
+    var result = [];
 
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] === target) {
+        result.push(i);
+      }
+    }
+
+    return result;
   }
 };
