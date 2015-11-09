@@ -141,5 +141,21 @@ describe('functions', function() {
     result = functionsAnswers.curryIt(curryMe)(a)(b)(c);
     expect(typeof result).to.eql('number');
     expect(result).to.eql(curryMe(a, b, c));
+
+    result = functionsAnswers.curryIt(curryMe)(a, b)(c);
+    expect(typeof result).to.eql('number');
+    expect(result).to.eql(curryMe(a, b, c));
+
+    result = functionsAnswers.curryIt(curryMe)(a)(b, c);
+    expect(typeof result).to.eql('number');
+    expect(result).to.eql(curryMe(a, b, c));
+
+    result = functionsAnswers.curryIt(curryMe, a)(b, c);
+    expect(typeof result).to.eql('number');
+    expect(result).to.eql(curryMe(a, b, c));
+
+    result = functionsAnswers.curryIt(curryMe, a, b)(c);
+    expect(typeof result).to.eql('number');
+    expect(result).to.eql(curryMe(a, b, c));
   });
 });
