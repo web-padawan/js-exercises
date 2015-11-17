@@ -38,7 +38,13 @@ exports.recursionAnswers = {
   },
 
   fibonacci: function(n) {
+    var r = [0, 1];
 
+    while (r.length <= n) {
+      r.push(r[r.length - 1] + r[r.length - 2]);
+    };
+
+    return r[n];
   },
 
   validParentheses: function(n) {
