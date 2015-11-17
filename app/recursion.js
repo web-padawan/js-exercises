@@ -17,7 +17,24 @@ exports.recursionAnswers = {
   },
 
   permute: function(arr) {
+    var result = [],
+        stack = [];
 
+    function doPerm() {
+      if (arr.length == 0) {
+        result.push(stack.slice());
+      }
+      for (var i = 0; i < arr.length; i++) {
+        var x = arr.splice(i, 1);
+        stack.push(x.toString());
+        doPerm();
+        stack.pop();
+        arr.splice(i, 0, x);
+      }
+    }
+
+    doPerm();
+    return result;
   },
 
   fibonacci: function(n) {
