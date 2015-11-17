@@ -47,7 +47,20 @@ exports.recursionAnswers = {
     return r[n];
   },
 
-  validParentheses: function(n) {
+  validParentheses: function validParentheses(n) {
+    if (n === 1) {
+      return ['()'];
+    }
 
+    var prevParentheses = validParentheses(n - 1);
+    var list = {};
+
+    prevParentheses.forEach(function(item) {
+      list['(' + item + ')'] = null;
+      list['()' + item] = null;
+      list[item + '()'] = null;
+    });
+
+    return Object.keys(list);
   }
 };
